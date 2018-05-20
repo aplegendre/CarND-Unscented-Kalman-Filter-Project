@@ -28,6 +28,13 @@ public:
   ///* state covariance matrix
   MatrixXd P_;
 
+  ///* process noise covariance matrix
+  MatrixXd Q_;
+
+  //* measurement noise covariance matrix
+  MatrixXd R_radar_;
+  MatrixXd R_laser_;
+
   ///* predicted sigma points matrix
   MatrixXd Xsig_pred_;
 
@@ -102,6 +109,8 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+  void NormalizeAngle(double& phi);
 };
 
 #endif /* UKF_H */
